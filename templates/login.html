@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Đăng nhập</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(120deg, #f8fafc 0%, #e0e7ef 100%);
+            margin: 0;
+            padding: 0;
+        }
+        .login-container {
+            max-width: 400px;
+            margin: 80px auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            padding: 36px 32px 28px 32px;
+        }
+        h2 {
+            color: #2d3748;
+            margin-bottom: 28px;
+            text-align: center;
+        }
+        label {
+            color: #4a5568;
+            font-weight: 500;
+            margin-bottom: 6px;
+            display: block;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 18px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 1rem;
+            background: #f7fafc;
+            transition: border 0.2s;
+        }
+        input[type="text"]:focus, input[type="password"]:focus {
+            border: 1.5px solid #667eea;
+            outline: none;
+            background: #fff;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(102,126,234,0.08);
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+        input[type="submit"]:hover {
+            background: linear-gradient(90deg, #5a67d8 0%, #6b46c1 100%);
+            box-shadow: 0 4px 16px rgba(102,126,234,0.16);
+        }
+        .error-message {
+            color: #e53e3e;
+            background: #fff5f5;
+            border: 1px solid #fed7d7;
+            border-radius: 5px;
+            padding: 8px 12px;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Đăng nhập</h2>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="error-message">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        <form method="POST">
+            <label>Username:</label>
+            <input type="text" name="username">
+            <label>Password:</label>
+            <input type="password" name="password">
+            <input type="submit" value="Đăng nhập">
+        </form>
+    </div>
+</body>
+</html>
